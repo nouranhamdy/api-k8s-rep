@@ -14,7 +14,7 @@ pipeline {
             }
         }
         
-        stage('GitCheckout') {
+        stage('GitCheckout 2') {
             steps {
                 checkout \
                     scm: [ $class : 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'environments']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/nouranhamdy/kustomization.git']]]
