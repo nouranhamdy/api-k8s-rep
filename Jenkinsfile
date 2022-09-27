@@ -1,12 +1,9 @@
 pipeline {
     agent any
     stages {
-        // stage('clone base repo'){
-        //     steps{
-        //         git 'https://github.com/nouranhamdy/api-k8s-rep.git'
-        //     }
-        // }
-    
+        // configuring scm using jenkins syntax
+        // 1- creates subdirectory in the workspace
+        // 2- clone the git repo in that directory
         stage('GitCheckout') {
             steps {
                 checkout \
@@ -21,11 +18,6 @@ pipeline {
             }
         }
 
-        // stage('clone kustomize repo'){
-        //     steps{
-        //         git 'https://github.com/nouranhamdy/kustomization.git'
-        //     }
-        // }
         stage('deploy k8s resources'){
             steps{
                 dir("${env.WORKSPACE}/environments/"){
