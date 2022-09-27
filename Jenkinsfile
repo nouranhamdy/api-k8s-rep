@@ -7,7 +7,7 @@ pipeline {
         stage('GitCheckout') {
             steps {
                 checkout \
-                    scm: [ $class : 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'api-k8s-repo']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/nouranhamdy/api-k8s-rep.git']]]
+                    scm: [ $class : 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'base']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/nouranhamdy/api-k8s-rep.git']]]
             }
         }
         
@@ -21,7 +21,7 @@ pipeline {
         stage('deploy k8s resources'){
             steps{
                 dir("${env.WORKSPACE}/environments/"){
-                    sh 'ls ../api-k8s-repo'
+                    sh 'ls ../base'
                     sh 'kubectl apply -k $namespace'
                 }
             }
