@@ -14,7 +14,7 @@ pipeline {
         stage('deploy k8s resources'){
             steps{
                 dir("${env.WORKSPACE}/environments/"){
-                    sh 'kubectl apply -k ${params.namespace}'
+                    sh 'kubectl apply -k $namespace'
                 }
             }
         }
