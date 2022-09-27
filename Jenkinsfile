@@ -10,7 +10,7 @@ pipeline {
         stage('GitCheckout') {
             steps {
                 checkout \
-                    scm: [ $class : 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'api-k8s-repo']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/nouranhamdy/kustomization.git']]])]
+                    scm: [ $class : 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'api-k8s-repo']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/nouranhamdy/kustomization.git']]]
             }
         }
         
