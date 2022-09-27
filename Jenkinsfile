@@ -26,13 +26,13 @@ pipeline {
         //         git 'https://github.com/nouranhamdy/kustomization.git'
         //     }
         // }
-        // stage('deploy k8s resources'){
-        //     steps{
-        //         dir("${env.WORKSPACE}/environments/"){
-        //             sh 'ls ../../base'
-        //             sh 'kubectl apply -k $namespace'
-        //         }
-        //     }
-        // }
+        stage('deploy k8s resources'){
+            steps{
+                dir("${env.WORKSPACE}/environments/"){
+                    sh 'ls ../../api-k8s-repo'
+                    sh 'kubectl apply -k $namespace'
+                }
+            }
+        }
     }
 }
