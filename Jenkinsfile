@@ -1,5 +1,5 @@
 pipeline {
-    agent [label='localhost']
+    agent {label 'localhost'}
     stages {
         // configuring scm using jenkins syntax
         // 1- creates subdirectory in the workspace
