@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('clone base repo'){
-            steps{
-                git 'https://github.com/nouranhamdy/api-k8s-rep.git'
-            }
-        }
+        // stage('clone base repo'){
+        //     steps{
+        //         git 'https://github.com/nouranhamdy/api-k8s-rep.git'
+        //     }
+        // }
     
         stage('GitCheckout') {
             steps {
@@ -29,7 +29,7 @@ pipeline {
         stage('deploy k8s resources'){
             steps{
                 dir("${env.WORKSPACE}/environments/"){
-                    sh 'ls ../../api-k8s-repo'
+                    sh 'ls ../api-k8s-repo'
                     sh 'kubectl apply -k $namespace'
                 }
             }
