@@ -3,6 +3,5 @@ kind: Kustomization
 metadata:
   name: arbitrary
 resources:
-  - deployment.yaml
-  - pod.yaml
-  - config.yaml
+  - netpol.yaml
+  
