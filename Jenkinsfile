@@ -22,7 +22,7 @@ pipeline {
             steps{
                 dir("${env.WORKSPACE}/environments/"){
                     sh 'ls ../base1'
-                    sh 'kubectl apply -k $namespace'
+                    sh '/usr/local/bin/kubectl apply -k $namespace'
                 }
             }
         }
