@@ -22,7 +22,7 @@ pipeline {
             steps{
                 dir("${env.WORKSPACE}/environments/"){
                     sh 'ls ../base1'
-                    sh 'export REMOTEURL=$URL && /usr/local/bin/envsubst < $namespace/kustomization.yaml > $namespace/kustomization.yaml'
+                    sh 'export REMOTEURL=$URL && /usr/local/bin/envsubst < $namespace/kustomization.tmpl > $namespace/kustomization.yaml'
                     sh '/usr/local/bin/kubectl apply -k $namespace'
                 }
             }
