@@ -21,8 +21,10 @@ pipeline {
         stage('deploy k8s resources'){
             steps{
                 dir("${env.WORKSPACE}/environments/"){
-                    sh 'ls ../base1'
-                    sh 'export REMOTEURL=$URL && /usr/local/bin/envsubst < $namespace/kustomization.tmpl > $namespace/kustomization.yaml'
+                    sh 'cat $namespace/kustomization.tmpl'
+                    //use envsubst for multiple variables substitution in one line 
+                    sh '/usr/local/bin/envsubst < $namespace/kustomization.tmpl > $namespace/kustomization.yaml'
+                    sh 'cat $namespace/kustomization.yaml'
                     sh '/usr/local/bin/kubectl apply -k $namespace'
                 }
             }
